@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:one_flutter/models/crud.dart';
+import 'package:crud_firebase/models/crud.dart';
 
 class AddStudents extends StatefulWidget {
   const AddStudents({super.key});
