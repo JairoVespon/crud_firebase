@@ -1,4 +1,4 @@
-mport 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -17,4 +17,29 @@ Future<List> getStudiantes() async {
   });
   //print('$students');
   return students;
+}
+
+Future<void> addAlumno(String nombres, String apellidos) async {
+ await db.collection('tb_students').add({"first_name" : nombres, "seconds_name"
+: apellidos});
+}
+
+Future<List> getAlumno() async {
+ List students = [];
+ CollectionReference collectionReference = db.collection('tb_students');
+ QuerySnapshot querySnapshot = await collectionReference.get();
+ 
+ for (var doc in querySnapshot.docs) {
+ final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+ 
+ final estudiante = {
+ "uid": doc.id,
+ "first_name": data["first_name"],
+ "seconds_name": data["seconds_name"],
+ };
+ students.add(estudiante);
+ }
+ 
+ //await Future.delayed(const Duration(seconds: 2));
+ return students;
 }
