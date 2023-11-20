@@ -52,8 +52,7 @@ class _HomeState extends State<Home> {
  return Dismissible(
  //Este metodo se ejecuta despues de haber desaparecido el elemento de la pantalla
  onDismissed: (direction) async{
- //Aca va el llamado del metodo que elimina el documento o registro
- //de la base de datos de firebase.
+ //Aca va el llamado del metodo que elimina el documento o registro de la base de datos de firebase.
  await deleteAlumno(snapshot.data?[index]['uid']);
  //Eliminando el dato de la memoria del snapshot
  snapshot.data?.removeAt(index);
