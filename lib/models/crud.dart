@@ -43,3 +43,9 @@ Future<List> getAlumno() async {
  //await Future.delayed(const Duration(seconds: 2));
  return students;
 }
+
+//Método para actualizar documentos de estudiantes.
+Future<void> editAlumno(String uid, String nombres, String apellidos) async {
+ await db.collection('tb_students').doc(uid).set({"first_name" : nombres, 
+"seconds_name" : apellidos});
+}
